@@ -17,15 +17,25 @@ const allowedOrigins = [
     .filter(Boolean),
 ];
 
+function isAllowedOrigin(origin) {
+  if (!origin) return true;
+  if (allowedOrigins.includes(origin)) return true;
+  // Vercel production + preview deployments (*.vercel.app)
+  if (/^https:\/\/[\w-]+\.vercel\.app$/.test(origin)) return true;
+  return false;
+}
+
 app.use(
   cors({
     origin(origin, callback) {
-      if (!origin || allowedOrigins.length <= 1 || allowedOrigins.includes(origin)) {
+      if (isAllowedOrigin(origin)) {
         callback(null, true);
       } else {
-        callback(new Error(`CORS blocked for origin: ${origin}`));
+        console.warn(`CORS blocked origin: ${origin}`);
+        callback(null, false);
       }
     },
+    credentials: true,
   })
 );
 app.use(express.json());
@@ -61,6 +71,11 @@ const server = app.listen(PORT, async () => {
       ? `Forum storage: Supabase PostgreSQL${forum.seeded ? " (seeded demo comments)" : ""}`
       : "Forum storage: in-memory (set SUPABASE_URL for production persistence)"
   );
+  if (allowedOrigins.length > 1) {
+    console.log(`CORS allowed origins: ${allowedOrigins.join(", ")} + *.vercel.app`);
+  } else {
+    console.log("CORS: localhost + *.vercel.app");
+  }
 });
 
 server.on("error", (err) => {
