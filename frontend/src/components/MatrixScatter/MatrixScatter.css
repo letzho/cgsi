@@ -1,0 +1,144 @@
+.matrix-scatter {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 1.25rem;
+  height: 100%;
+  min-height: 380px;
+}
+
+.matrix-scatter__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.matrix-scatter__title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #1a202c;
+}
+
+.matrix-scatter__subtitle {
+  font-size: 0.75rem;
+  color: #64748b;
+  margin-top: 0.25rem;
+}
+
+.matrix-scatter__legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.matrix-scatter__legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.7rem;
+  color: #475569;
+}
+
+.matrix-scatter__legend-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.matrix-scatter__chart {
+  width: 100%;
+  height: 320px;
+}
+
+.matrix-scatter__tooltip {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 0.6rem 0.8rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  font-size: 0.75rem;
+}
+
+.matrix-scatter__tooltip-title {
+  font-weight: 600;
+  color: #1a202c;
+  margin-bottom: 0.25rem;
+}
+
+.matrix-scatter__tooltip-row {
+  color: #64748b;
+  line-height: 1.5;
+}
+
+.matrix-scatter__legends {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: flex-end;
+}
+
+.matrix-scatter__legend--baseline {
+  padding: 0.35rem 0.5rem;
+  background: #f8fafc;
+  border-radius: 6px;
+  border: 1px solid #e2e8f0;
+}
+
+.matrix-scatter__legend-item--muted {
+  opacity: 0.75;
+}
+
+.matrix-scatter__tooltip--multi {
+  min-width: 200px;
+}
+
+.matrix-scatter__tooltip-divider {
+  height: 1px;
+  background: #e2e8f0;
+  margin: 0.35rem 0;
+}
+
+.matrix-scatter__tooltip-section {
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: #94a3b8;
+  margin-bottom: 0.25rem;
+}
+
+.matrix-scatter__tooltip-baseline {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.72rem;
+  color: #475569;
+  line-height: 1.6;
+}
+
+.matrix-scatter__tooltip-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.matrix-scatter__tooltip-x {
+  color: #94a3b8;
+  font-size: 0.65rem;
+}
+
+.matrix-scatter__tooltip-spread {
+  margin-top: 0.25rem;
+  font-weight: 600;
+  color: #334155;
+}
+
+@media (max-width: 640px) {
+  .matrix-scatter__chart {
+    height: 280px;
+  }
+}

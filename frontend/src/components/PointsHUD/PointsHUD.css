@@ -1,0 +1,115 @@
+.points-hud {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-shrink: 0;
+}
+
+.points-hud__coin {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: linear-gradient(135deg, #FF6900 0%, #FF8534 100%);
+  color: #fff;
+  padding: 0.35rem 0.75rem;
+  border-radius: 20px;
+  font-weight: 700;
+  font-size: 0.8rem;
+  box-shadow: 0 2px 12px rgba(255, 105, 0, 0.4);
+  animation: coin-glow 2s ease-in-out infinite;
+}
+
+.points-hud__coin-icon {
+  animation: spin-slow 4s linear infinite;
+}
+
+.points-hud__label {
+  font-weight: 500;
+  opacity: 0.9;
+  font-size: 0.65rem;
+}
+
+.points-hud__streak {
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+  color: #FF6900;
+  font-size: 0.75rem;
+  font-weight: 700;
+  animation: flicker 1.5s ease infinite;
+}
+
+.points-hud__progress-wrap {
+  display: none;
+}
+
+.points-hud__ticket-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.7rem;
+  border-radius: 8px;
+  background: #f0fdf8;
+  color: #00a862;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-decoration: none;
+  border: 1px solid #86efac;
+  transition: all 0.2s;
+}
+
+.points-hud__ticket-btn:hover {
+  background: #00C076;
+  color: #fff;
+  transform: scale(1.05);
+}
+
+@keyframes coin-glow {
+  0%, 100% { box-shadow: 0 2px 12px rgba(255, 105, 0, 0.4); }
+  50% { box-shadow: 0 4px 20px rgba(255, 105, 0, 0.65); }
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes flicker {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+@media (min-width: 1100px) {
+  .points-hud__progress-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 120px;
+  }
+
+  .points-hud__progress-bar {
+    height: 4px;
+    background: #e2e8f0;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .points-hud__progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #FF6900, #FFD700);
+    border-radius: 4px;
+    transition: width 0.5s ease;
+  }
+
+  .points-hud__progress-text {
+    font-size: 0.6rem;
+    color: #94a3b8;
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 768px) {
+  .points-hud__progress-wrap {
+    display: none;
+  }
+}

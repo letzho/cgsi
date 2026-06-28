@@ -1,0 +1,71 @@
+.matrix-page {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.matrix-page__intro {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 1.25rem;
+}
+
+.matrix-page__intro h2 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1a202c;
+  margin: 0 0 0.5rem;
+}
+
+.matrix-page__intro p {
+  font-size: 0.8rem;
+  color: #64748b;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.matrix-page__quadrants {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+
+.matrix-page__quadrant {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 1rem;
+  border-top: 3px solid;
+}
+
+.matrix-page__quadrant-name {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #1a202c;
+}
+
+.matrix-page__quadrant-count {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-top: 0.25rem;
+}
+
+.matrix-page__quadrant-desc {
+  font-size: 0.7rem;
+  color: #64748b;
+  margin-top: 0.35rem;
+  line-height: 1.4;
+}
+
+@media (max-width: 1024px) {
+  .matrix-page__quadrants {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .matrix-page__quadrants {
+    grid-template-columns: 1fr;
+  }
+}

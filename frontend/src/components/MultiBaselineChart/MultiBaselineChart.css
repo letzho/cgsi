@@ -1,0 +1,66 @@
+.multi-baseline-chart {
+  margin-bottom: 0.75rem;
+  padding: 0.65rem 0.75rem;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+}
+
+.multi-baseline-chart__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.35rem;
+}
+
+.multi-baseline-chart__title {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #334155;
+}
+
+.multi-baseline-chart__spread {
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: #64748b;
+}
+
+.multi-baseline-chart__canvas {
+  height: 140px;
+}
+
+.multi-baseline-chart__labels {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.25rem 0.75rem;
+  margin-top: 0.35rem;
+}
+
+.multi-baseline-chart__label-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+  font-size: 0.62rem;
+  color: #64748b;
+}
+
+.multi-baseline-chart__tooltip {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 0.5rem 0.65rem;
+  font-size: 0.72rem;
+  color: #475569;
+}
+
+.multi-baseline-chart__tooltip-title {
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 0.2rem;
+}
+
+.multi-baseline-chart__tooltip-note {
+  margin-top: 0.25rem;
+  color: #059669;
+  font-size: 0.65rem;
+}

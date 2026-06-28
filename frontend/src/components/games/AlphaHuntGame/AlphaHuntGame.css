@@ -1,0 +1,136 @@
+.alpha-hunt__header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #64748b;
+  margin-bottom: 1rem;
+}
+
+.alpha-hunt__streak {
+  color: #FF6900;
+  animation: flicker 1s ease infinite;
+}
+
+.alpha-hunt__mission {
+  text-align: center;
+  margin-bottom: 1.25rem;
+}
+
+.alpha-hunt__badge {
+  display: inline-block;
+  background: linear-gradient(135deg, #FF6900, #FF8534);
+  color: #fff;
+  font-size: 0.6rem;
+  font-weight: 700;
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.5rem;
+}
+
+.alpha-hunt__mission h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  color: #1a1a22;
+}
+
+.alpha-hunt__mission p {
+  margin: 0.35rem 0 0;
+  font-size: 0.8rem;
+  color: #64748b;
+}
+
+.alpha-hunt__options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+.alpha-hunt__card {
+  padding: 1rem;
+  border: 2px solid #e2e8f0;
+  border-radius: 14px;
+  background: #fff;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.alpha-hunt__card:hover:not(:disabled) {
+  border-color: #FF6900;
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(255, 105, 0, 0.2);
+}
+
+.alpha-hunt__card--winner {
+  border-color: #00C076 !important;
+  background: linear-gradient(135deg, #f0fdf8, #fff) !important;
+  animation: winner-pop 0.5s ease;
+}
+
+.alpha-hunt__card--wrong {
+  border-color: #FF4747 !important;
+  background: #fef2f2 !important;
+  opacity: 0.7;
+}
+
+.alpha-hunt__card-ticker {
+  font-weight: 700;
+  color: #FF6900;
+  font-size: 0.9rem;
+}
+
+.alpha-hunt__card-name {
+  font-size: 0.7rem;
+  color: #334155;
+  margin-top: 0.2rem;
+  line-height: 1.3;
+}
+
+.alpha-hunt__card-stats {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+  font-size: 0.65rem;
+  color: #94a3b8;
+}
+
+.alpha-hunt__hint {
+  text-align: center;
+  margin-top: 1rem;
+  font-size: 0.7rem;
+  color: #94a3b8;
+}
+
+.alpha-hunt--done {
+  text-align: center;
+  padding: 2rem;
+}
+
+.alpha-hunt__trophy {
+  font-size: 3.5rem;
+  animation: bounce-trophy 0.8s ease infinite alternate;
+}
+
+@keyframes winner-pop {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+@keyframes bounce-trophy {
+  from { transform: translateY(0) rotate(-5deg); }
+  to { transform: translateY(-10px) rotate(5deg); }
+}
+
+@keyframes flicker {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+@media (max-width: 480px) {
+  .alpha-hunt__options {
+    grid-template-columns: 1fr;
+  }
+}

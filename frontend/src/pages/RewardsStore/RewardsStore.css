@@ -1,0 +1,289 @@
+.rewards-store__hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #FF6900 0%, #FF8534 50%, #FFD700 100%);
+  background-size: 200% 200%;
+  animation: gradient-shift 5s ease infinite;
+  color: #fff;
+  margin-bottom: 1.25rem;
+}
+
+.rewards-store__hero h1 {
+  margin: 0;
+  font-size: 1.35rem;
+}
+
+.rewards-store__hero p {
+  margin: 0.35rem 0 0;
+  font-size: 0.8rem;
+  opacity: 0.9;
+}
+
+.rewards-store__balance {
+  text-align: center;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(8px);
+  padding: 0.75rem 1.25rem;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.rewards-store__balance-label {
+  display: block;
+  font-size: 0.65rem;
+  opacity: 0.85;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.rewards-store__balance-value {
+  font-size: 1.5rem;
+  font-weight: 800;
+}
+
+.rewards-store__cta-banner {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.85rem 1.15rem;
+  background: #fff8f3;
+  border: 1px dashed #FF6900;
+  border-radius: 12px;
+  margin-bottom: 1.25rem;
+  font-size: 0.8rem;
+  color: #334155;
+}
+
+.rewards-store__cta-banner a {
+  color: #FF6900;
+  font-weight: 700;
+}
+
+.rewards-store__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.reward-card {
+  background: #fff;
+  border: 2px solid #e2e8f0;
+  border-radius: 20px;
+  padding: 1.5rem;
+  text-align: center;
+  transition: all 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+
+.reward-card--affordable {
+  border-color: #FF6900;
+  box-shadow: 0 4px 20px rgba(255, 105, 0, 0.15);
+}
+
+.reward-card--affordable:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(255, 105, 0, 0.25);
+}
+
+.reward-card--vip {
+  background: linear-gradient(180deg, #fffbeb 0%, #fff 40%);
+}
+
+.reward-card__icon {
+  font-size: 2.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.reward-card h3 {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #1a1a22;
+}
+
+.reward-card p {
+  font-size: 0.75rem;
+  color: #64748b;
+  margin: 0.5rem 0 1rem;
+  line-height: 1.5;
+}
+
+.reward-card__cost {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #FF6900;
+  margin-bottom: 0.75rem;
+}
+
+.reward-card__owned {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  font-size: 0.7rem;
+  color: #00C076;
+  margin-bottom: 0.5rem;
+}
+
+.reward-card__btn {
+  width: 100%;
+  padding: 0.7rem;
+  border: none;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 0.8rem;
+  cursor: pointer;
+  background: linear-gradient(135deg, #FF6900, #FF8534);
+  color: #fff;
+  transition: all 0.2s;
+}
+
+.reward-card__btn:disabled {
+  background: #e2e8f0;
+  color: #94a3b8;
+  cursor: not-allowed;
+}
+
+.reward-card__btn:not(:disabled):hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 16px rgba(255, 105, 0, 0.4);
+}
+
+.rewards-store__wallet {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 1.25rem;
+}
+
+.rewards-store__wallet h3 {
+  margin: 0 0 1rem;
+  font-size: 0.95rem;
+}
+
+.ticket-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.85rem;
+  background: linear-gradient(135deg, #f8f9fb, #fff8f3);
+  border: 1px dashed #FF6900;
+  border-radius: 12px;
+  margin-bottom: 0.5rem;
+}
+
+.ticket-item__left {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.ticket-item__icon {
+  font-size: 1.5rem;
+}
+
+.ticket-item__name {
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+.ticket-item__date {
+  font-size: 0.65rem;
+  color: #94a3b8;
+}
+
+.ticket-item__code {
+  font-family: monospace;
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: #FF6900;
+  background: #fff;
+  padding: 0.35rem 0.65rem;
+  border-radius: 6px;
+  border: 1px solid #fcd34d;
+}
+
+.rewards-store__modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 300;
+  animation: fade-in 0.3s ease;
+}
+
+.rewards-store__modal-card {
+  background: #fff;
+  border-radius: 24px;
+  padding: 2rem;
+  text-align: center;
+  max-width: 360px;
+  animation: pop-in 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.rewards-store__modal-confetti {
+  font-size: 3rem;
+  animation: bounce-trophy 0.6s ease infinite alternate;
+}
+
+.rewards-store__modal-code {
+  font-family: monospace;
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #FF6900;
+  background: #fff8f3;
+  padding: 0.75rem 1.5rem;
+  border-radius: 12px;
+  margin: 1rem 0;
+  letter-spacing: 0.1em;
+}
+
+.rewards-store__modal-card button {
+  padding: 0.65rem 2rem;
+  background: #FF6900;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes pop-in {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes bounce-trophy {
+  from { transform: translateY(0); }
+  to { transform: translateY(-8px); }
+}
+
+@media (max-width: 900px) {
+  .rewards-store__grid {
+    grid-template-columns: 1fr;
+  }
+  .rewards-store__hero {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+}

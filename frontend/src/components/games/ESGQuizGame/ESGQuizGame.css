@@ -1,0 +1,123 @@
+.quiz-game {
+  padding: 0.5rem;
+}
+
+.quiz-game__progress {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 1rem;
+}
+
+.quiz-game__dot {
+  flex: 1;
+  height: 4px;
+  border-radius: 4px;
+  background: #e2e8f0;
+  transition: background 0.3s;
+}
+
+.quiz-game__dot--active {
+  background: linear-gradient(90deg, #FF6900, #FF8534);
+}
+
+.quiz-game__counter {
+  font-size: 0.7rem;
+  color: #FF6900;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5rem;
+}
+
+.quiz-game__question {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1a1a22;
+  margin: 0 0 1.25rem;
+  line-height: 1.5;
+}
+
+.quiz-game__options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.quiz-game__option {
+  padding: 0.85rem 1rem;
+  border: 2px solid #e2e8f0;
+  border-radius: 12px;
+  background: #fff;
+  text-align: left;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+  color: #334155;
+}
+
+.quiz-game__option:hover:not(:disabled) {
+  border-color: #FF6900;
+  transform: translateX(4px);
+  box-shadow: 0 4px 12px rgba(255, 105, 0, 0.15);
+}
+
+.quiz-game__option--selected {
+  border-color: #FF6900;
+  background: #fff8f3;
+}
+
+.quiz-game__option--correct {
+  border-color: #00C076 !important;
+  background: #f0fdf8 !important;
+  animation: pulse-correct 0.4s ease;
+}
+
+.quiz-game__option--wrong {
+  border-color: #FF4747 !important;
+  background: #fef2f2 !important;
+  animation: shake 0.4s ease;
+}
+
+.quiz-game__reward-hint {
+  margin-top: 1rem;
+  font-size: 0.7rem;
+  color: #94a3b8;
+  text-align: center;
+}
+
+.quiz-game--done {
+  text-align: center;
+  padding: 2rem 1rem;
+}
+
+.quiz-game__trophy {
+  font-size: 3rem;
+  animation: bounce-icon 0.6s ease infinite alternate;
+}
+
+.quiz-game__btn {
+  margin-top: 1rem;
+  padding: 0.65rem 1.5rem;
+  background: linear-gradient(135deg, #FF6900, #FF8534);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+@keyframes pulse-correct {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.02); }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-6px); }
+  75% { transform: translateX(6px); }
+}
+
+@keyframes bounce-icon {
+  from { transform: translateY(0); }
+  to { transform: translateY(-8px); }
+}

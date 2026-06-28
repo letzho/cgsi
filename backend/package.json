@@ -1,0 +1,21 @@
+{
+  "name": "cgs-esg-momentum-engine-backend",
+  "version": "2.0.0",
+  "description": "CGS ESG Momentum Engine 2.0 - Tri-Agent Quant Data Engine",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "npm run kill-port && node server.js",
+    "dev:watch": "npm run kill-port && node --watch server.js",
+    "kill-port": "powershell -NoProfile -ExecutionPolicy Bypass -File ./scripts/kill-port.ps1"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.108.2",
+    "cors": "^2.8.5",
+    "dotenv": "^17.4.2",
+    "express": "^4.21.2",
+    "multer": "^2.2.0",
+    "pdf-parse": "^1.1.1"
+  }
+}
