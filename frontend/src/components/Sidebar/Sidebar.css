@@ -17,11 +17,28 @@
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
 
-.sidebar__logo img {
+.sidebar__logo-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.sidebar__logo-cgs,
+.sidebar__logo-veritas {
   height: 32px;
   width: auto;
+  max-width: 48%;
   object-fit: contain;
+  flex-shrink: 0;
+}
+
+.sidebar__logo-cgs {
   filter: brightness(1.1);
+}
+
+.sidebar__logo-veritas {
+  height: 34px;
+  border-radius: 4px;
 }
 
 .sidebar__brand {

@@ -17,10 +17,21 @@ export default function Sidebar({ isOpen, onClose }) {
       />
       <aside className={`sidebar ${isOpen ? 'sidebar--open' : ''}`}>
         <div className="sidebar__logo">
-          <img src="/assets/cgs-logo.png" alt="CGS International" />
+          <div className="sidebar__logo-row">
+            <img
+              src="/assets/cgs-logo.png"
+              alt="CGS International"
+              className="sidebar__logo-cgs"
+            />
+            <img
+              src="/assets/veritasFinance.png"
+              alt="Veritas Finance"
+              className="sidebar__logo-veritas"
+            />
+          </div>
           <div className="sidebar__brand">
             <div className="sidebar__brand-title">ESG Momentum Engine 2.0</div>
-            <div className="sidebar__brand-sub">Powered by CGS × Moomoo</div>
+            <div className="sidebar__brand-sub">Powered by Veritas Finance</div>
           </div>
         </div>
 
@@ -56,7 +67,7 @@ export default function Sidebar({ isOpen, onClose }) {
         <div className="sidebar__footer">
           <div className="sidebar__status">
             <span className="sidebar__status-dot" />
-            Tri-Agent Pipeline Live
+            Live
           </div>
         </div>
       </aside>
