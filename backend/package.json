@@ -10,6 +10,9 @@
     "dev:watch": "npm run kill-port && node --watch server.js",
     "kill-port": "powershell -NoProfile -ExecutionPolicy Bypass -File ./scripts/kill-port.ps1"
   },
+  "engines": {
+    "node": ">=20 <23"
+  },
   "dependencies": {
     "@supabase/supabase-js": "^2.108.2",
     "cors": "^2.8.5",
