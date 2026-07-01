@@ -87,6 +87,30 @@ export function subscribeESGStream({ ticker = null, onMessage, onError } = {}) {
   return () => source.close();
 }
 
+export async function fetchVeritaNews(refresh = false) {
+  const qs = refresh ? '?refresh=true' : '';
+  return request(`/verita-news${qs}`);
+}
+
+export function subscribeVeritaNewsStream({ onMessage, onError } = {}) {
+  const source = new EventSource(`${API_BASE}/verita-news/stream`);
+
+  source.onmessage = (event) => {
+    try {
+      const data = JSON.parse(event.data);
+      onMessage?.(data);
+    } catch (err) {
+      onError?.(err);
+    }
+  };
+
+  source.onerror = (err) => {
+    onError?.(err);
+  };
+
+  return () => source.close();
+}
+
 export async function fetchForumComments(ticker = null) {
   const params = ticker ? `?ticker=${encodeURIComponent(ticker)}` : '';
   return request(`/forum/comments${params}`);

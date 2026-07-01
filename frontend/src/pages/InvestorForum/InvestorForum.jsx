@@ -15,6 +15,7 @@ import {
   postForumComment,
   previewCommentSentiment,
 } from '../../services/api';
+import VeritaNews from '../../components/VeritaNews/VeritaNews';
 import './InvestorForum.css';
 
 const SENTIMENT_STYLES = {
@@ -174,6 +175,8 @@ export default function InvestorForum() {
           <span className="investor-forum__hero-value">{comments.length}</span>
         </div>
       </div>
+
+      <VeritaNews />
 
       <div className="investor-forum__layout">
         <aside className="investor-forum__sidebar">

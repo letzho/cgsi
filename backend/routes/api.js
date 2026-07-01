@@ -23,7 +23,7 @@ import {
   previewSentiment,
   getForumStorageStatus,
 } from "../services/forum.js";
-import { extractFromUrl, extractFromUpload } from "../services/documentExtractor.js";
+import { getVeritaNewsBundle, subscribeVeritaNewsStream } from "../services/veritaNews.js";
 import { analyzeReport } from "../agents/ReportAnalystAgent.js";
 import { mockStocks } from "../data/stocks.js";
 
@@ -215,6 +215,20 @@ router.get("/esg/baseline/:ticker", async (req, res) => {
 router.get("/esg/stream", (req, res) => {
   const ticker = req.query.ticker || null;
   subscribeESGStream(res, { ticker });
+});
+
+router.get("/verita-news", async (req, res) => {
+  try {
+    const forceRefresh = req.query.refresh === "true";
+    const bundle = await getVeritaNewsBundle({ forceRefresh });
+    res.json({ success: true, ...bundle });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+router.get("/verita-news/stream", (req, res) => {
+  subscribeVeritaNewsStream(res);
 });
 
 router.get("/forum/comments", async (req, res) => {
