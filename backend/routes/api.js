@@ -24,6 +24,7 @@ import {
   getForumStorageStatus,
 } from "../services/forum.js";
 import { getVeritaNewsBundle, subscribeVeritaNewsStream } from "../services/veritaNews.js";
+import { extractFromUrl, extractFromUpload } from "../services/documentExtractor.js";
 import { analyzeReport } from "../agents/ReportAnalystAgent.js";
 import { mockStocks } from "../data/stocks.js";
 
