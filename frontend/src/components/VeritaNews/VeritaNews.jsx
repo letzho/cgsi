@@ -33,22 +33,19 @@ export default function VeritaNews() {
   const [error, setError] = useState(null);
   const [fetchedAt, setFetchedAt] = useState(null);
   const [aiEnabled, setAiEnabled] = useState(false);
+  const [feedMode, setFeedMode] = useState('asean');
+  const [tagline, setTagline] = useState('Overnight & off-hours ASEAN ESG wire — AI morning brief');
   const unsubscribeRef = useRef(null);
 
-  const loadStatic = async () => {
-    setLoading(true);
-    setError(null);
-    try {
-      const res = await fetchVeritaNews();
-      setHeadlines(res.headlines || []);
-      setAiSummary(res.aiSummary || null);
-      setOvernightWindow(res.overnightWindow || '');
-      setFetchedAt(res.fetchedAt);
-      setAiEnabled(res.aiEnabled);
-    } catch (err) {
-      setError(err.message);
-    } finally {
-      setLoading(false);
+  const applyBundleMeta = (res) => {
+    setHeadlines(res.headlines || []);
+    setAiSummary(res.aiSummary || null);
+    setOvernightWindow(res.overnightWindow || '');
+    setFetchedAt(res.fetchedAt);
+    setAiEnabled(res.aiEnabled);
+    setFeedMode(res.feedMode || 'asean');
+    if (res.tagline) {
+      setTagline(`${res.tagline} — AI morning brief`);
     }
   };
 
@@ -66,6 +63,8 @@ export default function VeritaNews() {
         if (event.type === 'window') {
           setOvernightWindow(event.overnightWindow || '');
           setFetchedAt(event.fetchedAt);
+          if (event.feedMode) setFeedMode(event.feedMode);
+          if (event.tagline) setTagline(`${event.tagline} — AI morning brief`);
         }
         if (event.type === 'headline') {
           setHeadlines((prev) => [...prev, event.headline]);
@@ -105,11 +104,7 @@ export default function VeritaNews() {
     if (unsubscribeRef.current) unsubscribeRef.current();
     fetchVeritaNews(true)
       .then((res) => {
-        setHeadlines(res.headlines || []);
-        setAiSummary(res.aiSummary || null);
-        setOvernightWindow(res.overnightWindow || '');
-        setFetchedAt(res.fetchedAt);
-        setAiEnabled(res.aiEnabled);
+        applyBundleMeta(res);
         setError(null);
       })
       .catch((err) => setError(err.message))
@@ -130,7 +125,7 @@ export default function VeritaNews() {
           <Newspaper size={20} />
           <div>
             <h2>Verita News</h2>
-            <p>Overnight &amp; off-hours ASEAN ESG wire — AI morning brief</p>
+            <p>{tagline}</p>
           </div>
         </div>
         <div className="verita-news__actions">
@@ -148,6 +143,14 @@ export default function VeritaNews() {
 
       {overnightWindow && (
         <div className="verita-news__window">{overnightWindow}</div>
+      )}
+
+      {feedMode !== 'asean' && (
+        <div className="verita-news__spillover">
+          {feedMode === 'global_spillover'
+            ? 'US/global headlines with potential ASEAN market spillover.'
+            : 'ASEAN headlines with US/global spillover stories where regional coverage is thin.'}
+        </div>
       )}
 
       {error && <div className="verita-news__error">{error}</div>}
@@ -168,6 +171,9 @@ export default function VeritaNews() {
                 <li key={`${item.title}-${i}`} className="verita-news__item">
                   <span className="verita-news__item-index">{i + 1}</span>
                   <div className="verita-news__item-body">
+                    {item.feed === 'global_spillover' && (
+                      <span className="verita-news__feed-badge">Global → ASEAN</span>
+                    )}
                     {item.link ? (
                       <a href={item.link} target="_blank" rel="noopener noreferrer">
                         {item.title}
@@ -229,6 +235,16 @@ export default function VeritaNews() {
                   </ul>
                 </div>
               )}
+              {aiSummary.aseanImplications?.length > 0 && (
+                <div className="verita-news__asean-impact">
+                  <strong>ASEAN market implications</strong>
+                  <ul>
+                    {aiSummary.aseanImplications.map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
+                </div>
+              )}
               {aiSummary.watchlist?.length > 0 && (
                 <div className="verita-news__watchlist">
                   Watch: {aiSummary.watchlist.join(' · ')}
@@ -236,7 +252,7 @@ export default function VeritaNews() {
               )}
               <div className="verita-news__method">
                 <Sparkles size={12} />
-                {aiSummary.method === 'openai' ? 'Powered by OpenAI' : 'Powered by Ixeven'}
+                {aiSummary.method === 'openai' ? 'Powered by Intelligent AI' : 'Powered by Ixeven'}
               </div>
             </>
           ) : null}

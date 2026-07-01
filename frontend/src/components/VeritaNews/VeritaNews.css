@@ -93,7 +93,31 @@
   background: #f8fafc;
   border-radius: 8px;
   padding: 0.4rem 0.65rem;
+  margin-bottom: 0.5rem;
+}
+
+.verita-news__spillover {
+  font-size: 0.72rem;
+  color: #9a3412;
+  background: #fff7ed;
+  border: 1px solid #fed7aa;
+  border-radius: 8px;
+  padding: 0.5rem 0.75rem;
   margin-bottom: 0.85rem;
+  line-height: 1.45;
+}
+
+.verita-news__feed-badge {
+  display: inline-block;
+  font-size: 0.58rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: #c2410c;
+  background: #ffedd5;
+  padding: 0.1rem 0.35rem;
+  border-radius: 4px;
+  margin-bottom: 0.2rem;
 }
 
 .verita-news__error {
@@ -254,6 +278,24 @@
 .verita-news__esg ul {
   margin: 0;
   padding-left: 1rem;
+}
+
+.verita-news__asean-impact {
+  margin-bottom: 0.5rem;
+  font-size: 0.72rem;
+  color: #9a3412;
+}
+
+.verita-news__asean-impact strong {
+  display: block;
+  margin-bottom: 0.25rem;
+  color: #c2410c;
+}
+
+.verita-news__asean-impact ul {
+  margin: 0;
+  padding-left: 1rem;
+  line-height: 1.45;
 }
 
 .verita-news__watchlist {
