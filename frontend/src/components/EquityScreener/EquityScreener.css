@@ -2,7 +2,7 @@
   background: #fff;
   border: 1px solid #e2e8f0;
   border-radius: 12px;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .equity-screener__header {
@@ -135,6 +135,26 @@
   50% { opacity: 0.4; }
 }
 
+
+.equity-screener__fav-col {
+  width: 36px;
+  padding-left: 0.75rem !important;
+  padding-right: 0.25rem !important;
+}
+
+.equity-screener__rate {
+  font-size: 0.75rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.equity-screener__rate--up {
+  color: #00C076;
+}
+
+.equity-screener__rate--down {
+  color: #FF4747;
+}
 
 .equity-screener__momentum {
   font-size: 0.75rem;

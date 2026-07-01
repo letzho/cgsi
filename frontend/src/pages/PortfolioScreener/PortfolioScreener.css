@@ -32,3 +32,9 @@
   color: #fff;
   border-color: #5a6777;
 }
+
+.screener-page__filter-btn--fav {
+  background: #fff8f3;
+  border-color: #FF6900;
+  color: #c2410c;
+}

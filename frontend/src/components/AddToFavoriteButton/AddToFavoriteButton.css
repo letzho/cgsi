@@ -1,0 +1,107 @@
+.add-fav {
+  position: relative;
+  display: inline-flex;
+}
+
+.add-fav__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border: none;
+  background: transparent;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.add-fav__btn:hover {
+  background: #f1f5f9;
+}
+
+.add-fav__menu {
+  min-width: 200px;
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.18);
+  padding: 0.5rem;
+}
+
+.add-fav__menu--portal {
+  position: fixed;
+  z-index: 10000;
+  width: 220px;
+}
+
+.add-fav__menu-title {
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #64748b;
+  padding: 0.25rem 0.5rem 0.4rem;
+}
+
+.add-fav__empty {
+  margin: 0 0 0.35rem;
+  padding: 0 0.5rem;
+  font-size: 0.72rem;
+  color: #94a3b8;
+}
+
+.add-fav__option {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 0.45rem 0.5rem;
+  border: none;
+  background: none;
+  border-radius: 6px;
+  font-size: 0.78rem;
+  cursor: pointer;
+  color: #334155;
+}
+
+.add-fav__option:hover:not(:disabled) {
+  background: #f8fafc;
+}
+
+.add-fav__option:disabled {
+  color: #00C076;
+  cursor: default;
+}
+
+.add-fav__new {
+  display: flex;
+  gap: 0.35rem;
+  margin-top: 0.35rem;
+  padding-top: 0.35rem;
+  border-top: 1px solid #f1f5f9;
+}
+
+.add-fav__new input {
+  flex: 1;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  padding: 0.35rem 0.5rem;
+  font-size: 0.72rem;
+}
+
+.add-fav__new button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  border: none;
+  border-radius: 6px;
+  background: #FF6900;
+  color: #fff;
+  cursor: pointer;
+}
+
+.add-fav__new button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}

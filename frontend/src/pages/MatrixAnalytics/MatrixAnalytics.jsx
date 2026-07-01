@@ -1,4 +1,6 @@
+import { useSearchParams, Link } from 'react-router-dom';
 import { useStocks } from '../../hooks/useStocks';
+import { useFavorites } from '../../context/FavoritesContext';
 import MatrixScatter from '../../components/MatrixScatter/MatrixScatter';
 import StockDetailPanel from '../../components/StockDetailPanel/StockDetailPanel';
 import BaselineMetricPicker from '../../components/BaselineMetricPicker/BaselineMetricPicker';
@@ -29,6 +31,13 @@ const QUADRANT_INFO = [
 ];
 
 export default function MatrixAnalytics() {
+  const [searchParams] = useSearchParams();
+  const listId = searchParams.get('list');
+  const { getListById } = useFavorites();
+  const highlightList = listId ? getListById(listId) : null;
+  const highlightTickers =
+    highlightList?.tickers?.length > 0 ? highlightList.tickers : null;
+
   const {
     stocks,
     loading,
@@ -62,6 +71,16 @@ export default function MatrixAnalytics() {
         </p>
       </div>
 
+      {highlightList && (
+        <div className="matrix-page__fav-banner">
+          <span>
+            Comparing favourites: <strong>{highlightList.name}</strong> ({highlightList.tickers.length}{' '}
+            stocks highlighted)
+          </span>
+          <Link to="/matrix">Clear highlight</Link>
+        </div>
+      )}
+
       <div className="matrix-page__quadrants">
         {QUADRANT_INFO.map((q) => {
           const count = stocks.filter((s) => s.quadrantId === q.id).length;
@@ -94,6 +113,7 @@ export default function MatrixAnalytics() {
         selectedTicker={selectedStock?.ticker}
         highlightProvider={comparisonProvider}
         visibleMetrics={visibleMetrics}
+        highlightTickers={highlightTickers}
       />
 
       <StockDetailPanel

@@ -68,9 +68,15 @@ export default function MatrixScatter({
   selectedTicker,
   highlightProvider = null,
   visibleMetrics = null,
+  highlightTickers = null,
 }) {
   const activeSeries = filterBaselineSeries(visibleMetrics);
-  const allPoints = expandStocksToMultiBaselinePoints(stocks, highlightProvider, visibleMetrics);
+  const allPoints = expandStocksToMultiBaselinePoints(
+    stocks,
+    highlightProvider,
+    visibleMetrics,
+    highlightTickers
+  );
   const metricCount = activeSeries.length;
 
   const handleClick = (point) => {
@@ -84,9 +90,11 @@ export default function MatrixScatter({
         <div>
           <div className="matrix-scatter__title">ESG Momentum Matrix · Multi-Baseline</div>
           <div className="matrix-scatter__subtitle">
-            {metricCount === 1
-              ? '1 baseline metric on X-axis · momentum on Y'
-              : `${metricCount} baseline metrics per company on X · same momentum on Y`}
+            {highlightTickers?.length
+              ? `Highlighting ${highlightTickers.length} favourite${highlightTickers.length > 1 ? 's' : ''} · dimmed = rest of universe`
+              : metricCount === 1
+                ? '1 baseline metric on X-axis · momentum on Y'
+                : `${metricCount} baseline metrics per company on X · same momentum on Y`}
           </div>
         </div>
         <div className="matrix-scatter__legends">
@@ -163,16 +171,17 @@ export default function MatrixScatter({
                     const { cx, cy, payload } = props;
                     const r = payload.providerId === 'sgx' ? 6 : 4.5;
                     const selected = payload.ticker === selectedTicker;
+                    const inFav = highlightTickers?.includes(payload.ticker);
                     const opacity = payload.opacity ?? 1;
                     return (
                       <circle
                         cx={cx}
                         cy={cy}
-                        r={selected ? r + 2 : r}
+                        r={selected || inFav ? r + 2 : r}
                         fill={series.color}
                         fillOpacity={opacity}
-                        stroke={selected ? '#1e293b' : series.color}
-                        strokeWidth={selected ? 2 : 0}
+                        stroke={selected || inFav ? '#1e293b' : series.color}
+                        strokeWidth={selected || inFav ? 2.5 : 0}
                       />
                     );
                   }}

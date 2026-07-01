@@ -24,14 +24,14 @@ export default function Sidebar({ isOpen, onClose }) {
               className="sidebar__logo-cgs"
             />
             <img
-              src="/assets/veritasFinance.png"
+              src="/assets/veritaFinance.png"
               alt="Veritas Finance"
               className="sidebar__logo-veritas"
             />
           </div>
           <div className="sidebar__brand">
-            <div className="sidebar__brand-title">ESG Momentum Engine 2.0</div>
-            <div className="sidebar__brand-sub">Powered by Veritas Finance</div>
+            <div className="sidebar__brand-title">Verita Finance</div>
+            <div className="sidebar__brand-sub">Powered by Ixeven</div>
           </div>
         </div>
 

@@ -1,0 +1,220 @@
+.favorites-panel {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 1.25rem;
+}
+
+.favorites-panel__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.favorites-panel__header h3 {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin: 0;
+  font-size: 0.95rem;
+  color: #1a202c;
+}
+
+.favorites-panel__header p {
+  margin: 0.25rem 0 0;
+  font-size: 0.72rem;
+  color: #64748b;
+}
+
+.favorites-panel__create-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.45rem 0.85rem;
+  border-radius: 8px;
+  border: none;
+  background: #FF6900;
+  color: #fff;
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.favorites-panel__create-form {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.favorites-panel__create-form input {
+  flex: 1;
+  min-width: 180px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.82rem;
+}
+
+.favorites-panel__create-form button[type='submit'] {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 8px;
+  background: #5a6777;
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.78rem;
+  cursor: pointer;
+}
+
+.favorites-panel__cancel {
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  background: #fff;
+  font-size: 0.78rem;
+  cursor: pointer;
+}
+
+.favorites-panel__empty {
+  text-align: center;
+  padding: 1.5rem;
+  color: #94a3b8;
+  font-size: 0.82rem;
+}
+
+.favorites-panel__empty p {
+  margin: 0.5rem 0 0;
+}
+
+.favorites-panel__lists {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 0.75rem;
+}
+
+.favorites-panel__list-card {
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 0.75rem;
+  background: #fafbfc;
+}
+
+.favorites-panel__list-card--active {
+  border-color: #FF6900;
+  box-shadow: 0 0 0 2px rgba(255, 105, 0, 0.15);
+}
+
+.favorites-panel__list-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.favorites-panel__list-name {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  border: none;
+  background: none;
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: #1e293b;
+  cursor: pointer;
+  padding: 0;
+}
+
+.favorites-panel__count {
+  font-size: 0.65rem;
+  background: #e2e8f0;
+  color: #475569;
+  padding: 0.1rem 0.4rem;
+  border-radius: 999px;
+  font-weight: 600;
+}
+
+.favorites-panel__delete {
+  border: none;
+  background: none;
+  color: #94a3b8;
+  cursor: pointer;
+  padding: 0.25rem;
+}
+
+.favorites-panel__delete:hover {
+  color: #dc2626;
+}
+
+.favorites-panel__tickers {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.favorites-panel__tickers li {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+  padding: 0.35rem 0;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.favorites-panel__tickers li:last-child {
+  border-bottom: none;
+}
+
+.favorites-panel__company {
+  display: block;
+  color: #64748b;
+  font-size: 0.68rem;
+  margin-top: 0.1rem;
+}
+
+.favorites-panel__tickers button {
+  border: none;
+  background: #f1f5f9;
+  border-radius: 4px;
+  padding: 0.2rem;
+  cursor: pointer;
+  color: #64748b;
+  flex-shrink: 0;
+}
+
+.favorites-panel__hint {
+  margin: 0;
+  font-size: 0.72rem;
+  color: #94a3b8;
+  font-style: italic;
+}
+
+.favorites-panel__matrix-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-top: 0.6rem;
+  width: 100%;
+  justify-content: center;
+  padding: 0.45rem 0.6rem;
+  border: 1px solid #5a6777;
+  border-radius: 8px;
+  background: #f8fafc;
+  color: #334155;
+  font-size: 0.72rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.favorites-panel__matrix-btn:hover {
+  background: #5a6777;
+  color: #fff;
+}

@@ -1,7 +1,10 @@
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { useStocks } from '../../hooks/useStocks';
+import { useFavorites } from '../../context/FavoritesContext';
 import EquityScreener from '../../components/EquityScreener/EquityScreener';
 import StockDetailPanel from '../../components/StockDetailPanel/StockDetailPanel';
+import StockComparePanel from '../../components/StockComparePanel/StockComparePanel';
+import FavoritesPanel from '../../components/FavoritesPanel/FavoritesPanel';
 import './PortfolioScreener.css';
 
 const FILTERS = [
@@ -11,6 +14,10 @@ const FILTERS = [
   { id: 'value_traps', label: 'Value Traps' },
   { id: 'overrated_leaders', label: 'Overrated Leaders' },
 ];
+
+function pickDefaultCompare(stocks, tickerPrefer) {
+  return stocks.find((s) => s.ticker === tickerPrefer)?.ticker || stocks[0]?.ticker || '';
+}
 
 export default function PortfolioScreener() {
   const {
@@ -26,7 +33,24 @@ export default function PortfolioScreener() {
     visibleMetrics,
     setVisibleMetrics,
   } = useStocks();
+  const { lists } = useFavorites();
   const [quadrantFilter, setQuadrantFilter] = useState(null);
+  const [activeListId, setActiveListId] = useState(null);
+
+  const defaultHigh = useMemo(
+    () => pickDefaultCompare(stocks, 'SEMBCORP.SI') || pickDefaultCompare(stocks, 'U96.SI'),
+    [stocks]
+  );
+  const defaultLow = useMemo(() => pickDefaultCompare(stocks, 'G13.SI'), [stocks]);
+
+  const [compareA, setCompareA] = useState('');
+  const [compareB, setCompareB] = useState('');
+
+  const compareTickerA = compareA || defaultHigh;
+  const compareTickerB = compareB || defaultLow;
+
+  const activeList = lists.find((l) => l.id === activeListId);
+  const favoriteTickerFilter = activeList?.tickers?.length ? activeList.tickers : null;
 
   if (loading) {
     return <div style={{ textAlign: 'center', padding: '3rem', color: '#64748b' }}>Loading screener...</div>;
@@ -38,6 +62,21 @@ export default function PortfolioScreener() {
 
   return (
     <div className="screener-page">
+      <StockComparePanel
+        stocks={stocks}
+        tickerA={compareTickerA}
+        tickerB={compareTickerB}
+        onTickerAChange={setCompareA}
+        onTickerBChange={setCompareB}
+      />
+
+      <FavoritesPanel
+        stocks={stocks}
+        activeListId={activeListId}
+        onSelectList={setActiveListId}
+        onClearListFilter={() => setActiveListId(null)}
+      />
+
       <div className="screener-page__filters">
         {FILTERS.map((f) => (
           <button
@@ -50,6 +89,14 @@ export default function PortfolioScreener() {
             {f.label}
           </button>
         ))}
+        {activeList && (
+          <button
+            className="screener-page__filter-btn screener-page__filter-btn--fav screener-page__filter-btn--active"
+            onClick={() => setActiveListId(null)}
+          >
+            ★ {activeList.name} (clear)
+          </button>
+        )}
       </div>
 
       <EquityScreener
@@ -57,7 +104,9 @@ export default function PortfolioScreener() {
         onStockClick={selectStock}
         selectedTicker={selectedStock?.ticker}
         filterQuadrant={quadrantFilter}
+        favoriteTickerFilter={favoriteTickerFilter}
         title="Portfolio Equity Screener"
+        showFavorites
       />
 
       <StockDetailPanel

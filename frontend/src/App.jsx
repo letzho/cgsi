@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { GamificationProvider } from './context/GamificationContext';
+import { FavoritesProvider } from './context/FavoritesContext';
 import AppLayout from './components/AppLayout/AppLayout';
 import Dashboard from './pages/Dashboard/Dashboard';
 import MatrixAnalytics from './pages/MatrixAnalytics/MatrixAnalytics';
@@ -12,6 +13,7 @@ import ESGReportAnalyzer from './pages/ESGReportAnalyzer/ESGReportAnalyzer';
 export default function App() {
   return (
     <GamificationProvider>
+      <FavoritesProvider>
       <BrowserRouter>
         <Routes>
           <Route element={<AppLayout />}>
@@ -25,6 +27,7 @@ export default function App() {
           </Route>
         </Routes>
       </BrowserRouter>
+      </FavoritesProvider>
     </GamificationProvider>
   );
 }

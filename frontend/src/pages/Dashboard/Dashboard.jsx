@@ -105,6 +105,7 @@ export default function Dashboard() {
           selectedTicker={selectedStock?.ticker}
           filterQuadrant={alphaFilter ? 'hidden_winners' : null}
           title={alphaFilter ? 'Hidden Winners — Alpha Basket' : 'ASEAN Equity Screener'}
+          showFavorites
         />
       </div>
 

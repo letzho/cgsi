@@ -90,15 +90,22 @@ export function buildMultiBaselineChartData(stock, visibleIds = null) {
 export function expandStocksToMultiBaselinePoints(
   stocks,
   highlightProvider = null,
-  visibleIds = null
+  visibleIds = null,
+  highlightTickers = null
 ) {
   const seriesList = filterBaselineSeries(visibleIds);
+  const tickerSet = highlightTickers?.length ? new Set(highlightTickers) : null;
   const points = [];
 
   for (const stock of stocks) {
     for (const series of seriesList) {
       const isHighlighted =
         !highlightProvider || series.id === 'sgx' || series.id === highlightProvider;
+
+      let opacity = isHighlighted ? 1 : 0.45;
+      if (tickerSet) {
+        opacity = tickerSet.has(stock.ticker) ? 1 : 0.1;
+      }
 
       points.push({
         ...stock,
@@ -110,7 +117,7 @@ export function expandStocksToMultiBaselinePoints(
         x: getComparableBaselineScore(stock, series.id),
         y: stock.momentumRateOfChange,
         z: series.id === 'sgx' ? 120 : isHighlighted ? 90 : 55,
-        opacity: isHighlighted ? 1 : 0.45,
+        opacity,
         spread: getBaselineSpread(stock, visibleIds),
       });
     }

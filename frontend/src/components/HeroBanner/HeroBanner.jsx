@@ -9,7 +9,7 @@ export default function HeroBanner({ hiddenWinners = 0 }) {
       <div className="hero-banner__content">
         <div className="hero-banner__badge">
           <Sparkles size={12} />
-          Live Tri-Agent Pipeline
+          Live Verita Finance
         </div>
         <h2 className="hero-banner__title">
           Discover ASEAN Alpha <span className="hero-banner__highlight">Before the Market</span>

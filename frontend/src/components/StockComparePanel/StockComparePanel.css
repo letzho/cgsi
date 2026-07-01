@@ -1,0 +1,151 @@
+.stock-compare-panel {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 1.25rem;
+}
+
+.stock-compare-panel__header h3 {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #1a202c;
+}
+
+.stock-compare-panel__header p {
+  margin: 0.35rem 0 0;
+  font-size: 0.75rem;
+  color: #64748b;
+}
+
+.stock-compare-panel__selectors {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  margin: 1rem 0;
+}
+
+.stock-compare-panel__select {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: #475569;
+}
+
+.stock-compare-panel__select span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.stock-compare-panel__select--high span {
+  color: #00875a;
+}
+
+.stock-compare-panel__select--low span {
+  color: #dc2626;
+}
+
+.stock-compare-panel__select select {
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 0.5rem 0.6rem;
+  font-size: 0.78rem;
+  background: #f8fafc;
+}
+
+.stock-compare-panel__stats {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.stock-compare-panel__stat {
+  flex: 1;
+  padding: 0.65rem 0.85rem;
+  border-radius: 10px;
+  border-left: 3px solid;
+  background: #f8fafc;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  font-size: 0.72rem;
+  color: #64748b;
+}
+
+.stock-compare-panel__stat strong {
+  font-size: 0.82rem;
+  color: #1e293b;
+}
+
+.stock-compare-panel__rate {
+  font-weight: 700;
+  color: #334155;
+}
+
+.stock-compare-panel__vs {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #94a3b8;
+}
+
+.stock-compare-panel__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.stock-compare-panel__card {
+  border: 1px solid #e8eaed;
+  border-radius: 10px;
+  padding: 1rem;
+  background: #fafbfc;
+}
+
+.stock-compare-panel__card-title {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+.stock-compare-panel__card-sub {
+  margin: 0.25rem 0 0.75rem;
+  font-size: 0.68rem;
+  color: #64748b;
+}
+
+.stock-compare-panel__chart {
+  min-height: 240px;
+}
+
+.stock-compare-panel__chart--split {
+  min-height: 260px;
+}
+
+.stock-compare-panel__empty {
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #94a3b8;
+  font-size: 0.82rem;
+}
+
+@media (max-width: 900px) {
+  .stock-compare-panel__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .stock-compare-panel__selectors {
+    grid-template-columns: 1fr;
+  }
+
+  .stock-compare-panel__stats {
+    flex-direction: column;
+  }
+}

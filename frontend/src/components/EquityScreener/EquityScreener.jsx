@@ -1,6 +1,7 @@
 import { useState, useMemo } from 'react';
 import { Search } from 'lucide-react';
 import { ACTION_SIGNAL_STYLES } from '../../utils/constants';
+import AddToFavoriteButton from '../AddToFavoriteButton/AddToFavoriteButton';
 import './EquityScreener.css';
 
 export default function EquityScreener({
@@ -8,7 +9,9 @@ export default function EquityScreener({
   onStockClick,
   selectedTicker,
   filterQuadrant = null,
+  favoriteTickerFilter = null,
   title = 'ASEAN Equity Screener',
+  showFavorites = false,
 }) {
   const [search, setSearch] = useState('');
 
@@ -17,6 +20,11 @@ export default function EquityScreener({
 
     if (filterQuadrant) {
       result = result.filter((s) => s.quadrantId === filterQuadrant);
+    }
+
+    if (favoriteTickerFilter?.length) {
+      const set = new Set(favoriteTickerFilter);
+      result = result.filter((s) => set.has(s.ticker));
     }
 
     if (search.trim()) {
@@ -31,7 +39,7 @@ export default function EquityScreener({
     }
 
     return result;
-  }, [stocks, search, filterQuadrant]);
+  }, [stocks, search, filterQuadrant, favoriteTickerFilter]);
 
   return (
     <div className="equity-screener">
@@ -52,11 +60,13 @@ export default function EquityScreener({
         <table className="equity-screener__table">
           <thead>
             <tr>
+              {showFavorites && <th className="equity-screener__fav-col" />}
               <th>Ticker</th>
               <th>Company</th>
               <th>Price</th>
               <th>ESG Score</th>
               <th>Momentum</th>
+              <th>Rate Δ</th>
               <th>Quadrant</th>
               <th>Signal</th>
             </tr>
@@ -64,7 +74,7 @@ export default function EquityScreener({
           <tbody>
             {filtered.length === 0 ? (
               <tr>
-                <td colSpan={7} className="equity-screener__empty">
+                <td colSpan={showFavorites ? 9 : 8} className="equity-screener__empty">
                   No equities match your criteria
                 </td>
               </tr>
@@ -79,6 +89,11 @@ export default function EquityScreener({
                     }`}
                     onClick={() => onStockClick?.(stock)}
                   >
+                    {showFavorites && (
+                      <td className="equity-screener__fav-col" onClick={(e) => e.stopPropagation()}>
+                        <AddToFavoriteButton ticker={stock.ticker} />
+                      </td>
+                    )}
                     <td className="equity-screener__ticker">{stock.ticker}</td>
                     <td className="equity-screener__company">{stock.company}</td>
                     <td className="equity-screener__price">
@@ -111,6 +126,17 @@ export default function EquityScreener({
                       <div style={{ color: '#94a3b8', fontSize: '0.65rem' }}>
                         {stock.momentumRating}
                       </div>
+                    </td>
+                    <td
+                      className={`equity-screener__rate ${
+                        (stock.momentumRateOfChange || 0) >= 0
+                          ? 'equity-screener__rate--up'
+                          : 'equity-screener__rate--down'
+                      }`}
+                    >
+                      {stock.momentumRateOfChange != null
+                        ? `${stock.momentumRateOfChange > 0 ? '+' : ''}${stock.momentumRateOfChange}%`
+                        : '—'}
                     </td>
                     <td style={{ fontSize: '0.75rem' }}>{stock.quadrant}</td>
                     <td>
